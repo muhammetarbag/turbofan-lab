@@ -2,6 +2,12 @@
 
 Türkçe, etkileşimli turbofan öğretim uygulaması. Motor kesiti ve akışlar SVG ile çizilir; rotor projeksiyonları ve parçacıklar `requestAnimationFrame` ile hareket eder. Harici görsel, API veya hesap gerektirmez.
 
+## Herkese açık uygulama
+
+[Uygulamayı aç](https://muhammetarbag.github.io/turbofan-lab/) · [Kaynak kod](https://github.com/muhammetarbag/turbofan-lab)
+
+`main` dalına gönderilen değişiklikler GitHub Actions ile test edilip GitHub Pages üzerinde yayımlanır. Pages için `/turbofan-lab` yol öneki yalnızca `GITHUB_PAGES=true` derlemesinde eklenir. Yerel geliştirme kök adreste çalışır.
+
 ## Çalıştırma
 
 Node.js 22.18+ ve npm gerekir.

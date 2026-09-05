@@ -60,7 +60,7 @@ export default function Home() {
   const q = questions[question], answerIndex = answers[question];
   const finishedQuiz = answers.every(a=>a!==null);
   return <div className="app-shell">
-    <header className="topbar"><a className="brand" href="/" aria-label="Turbofan Lab ana sayfa"><span className="brand-mark"><Fan/></span><b>TURBOFAN<span>LAB</span></b></a><span className="quiet">ETKİLEŞİMLİ HAVACILIK ATÖLYESİ</span><span className="model-badge"><i/> Eğitim modeli</span></header>
+    <header className="topbar"><a className="brand" href="./" aria-label="Turbofan Lab ana sayfa"><span className="brand-mark"><Fan/></span><b>TURBOFAN<span>LAB</span></b></a><span className="quiet">ETKİLEŞİMLİ HAVACILIK ATÖLYESİ</span><span className="model-badge"><i/> Eğitim modeli</span></header>
     <main>
       <div className="page-heading"><div><div className="eyebrow">MOTORUN İÇİNE BİR BAKIŞ</div><h1>Bir motor. İki hava yolu.</h1><p>Havanın izini sür. Enerjinin nasıl itkiye dönüştüğünü keşfet.</p></div><div className="heading-note"><span>AKIŞ YÖNÜ</span><Wind/><span>soldan sağa</span></div></div>
       <nav className="main-tabs" aria-label="Laboratuvar bölümleri">{([{id:'explore',title:'Kesiti keşfet',en:'Explore',icon:Layers3},{id:'lab',title:'Interactive Lab',en:'Deney yap',icon:Beaker},{id:'compare',title:'Compare Mode',en:'Karşılaştır',icon:ArrowDownRight},{id:'quiz',title:'Mini quiz',en:'Kendini dene',icon:BookOpen}] as const).map(t=><Button key={t.id} variant="ghost" aria-current={tab===t.id?'page':undefined} className={tab===t.id?'active':''} onClick={()=>{setTab(t.id);if(t.id!=='lab'){setFollow(null);setTracked(null);}if(t.id==='quiz')selectStage(questions[question].stage);}}><t.icon size={17}/>{t.title}<span>{t.en}</span></Button>)}</nav>
