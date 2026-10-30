@@ -16,10 +16,10 @@ export const stages = [
 export const components = [
   { name: 'Fan', tr: 'Ön fan', x: 205, y: 80, stage: 1, text: 'Büyük miktarda havayı hızlandırır. Yüksek bypass oranında itkinin önemli bölümü bu havadan gelir.' },
   { name: 'Bypass kanalı', tr: 'Çekirdeğin çevresindeki yol', x: 400, y: 87, stage: 1, text: 'Hava yanma odasına girmeden motorun çevresinden geçer; fanın aktardığı enerjiyle itkiye katkı sağlar.' },
-  { name: 'LP compressor', tr: 'Düşük basınç kompresörü', x: 315, y: 352, stage: 2, text: 'İlk sıkıştırmayı yapar. Fanla birlikte düşük basınç türbininin döndürdüğü şafta bağlıdır.' },
+  { name: 'LP compressor', tr: 'Düşük basınç kompresörü', x: 315, y: 374, stage: 2, text: 'İlk sıkıştırmayı yapar. Fanla birlikte düşük basınç türbininin döndürdüğü şafta bağlıdır.' },
   { name: 'HP compressor', tr: 'Yüksek basınç kompresörü', x: 442, y: 391, stage: 2, text: 'Havanın toplam basıncını ve sıcaklığını daha fazla artırır; gücünü yüksek basınç türbininden alır.' },
   { name: 'Combustion chamber', tr: 'Yanma odası', x: 600, y: 94, stage: 3, text: 'Yakıtın kimyasal enerjisi akışa ısı olarak eklenir. Sıcaklık artar, toplam basınçta küçük bir kayıp olur.' },
-  { name: 'HP turbine', tr: 'Yüksek basınç türbini', x: 701, y: 352, stage: 4, text: 'Gazdan iş alır ve yüksek basınç kompresörüne kendi şaftıyla aktarır.' },
+  { name: 'HP turbine', tr: 'Yüksek basınç türbini', x: 701, y: 374, stage: 4, text: 'Gazdan iş alır ve yüksek basınç kompresörüne kendi şaftıyla aktarır.' },
   { name: 'LP turbine', tr: 'Düşük basınç türbini', x: 791, y: 391, stage: 4, text: 'Gazdan aldığı işi içteki uzun şaft üzerinden fan ve düşük basınç kompresörüne iletir.' },
   { name: 'Core nozzle', tr: 'Çekirdek egzoz nozülü', x: 943, y: 352, stage: 5, text: 'Türbinlerden sonra gazda kalan enerjinin bir kısmını çıkış hızına dönüştürür.' },
   { name: 'Bypass exhaust', tr: 'Bypass çıkışı', x: 886, y: 88, stage: 5, text: 'Yanma odasından geçmeyen, daha soğuk hava burada motordan çıkar.' },
