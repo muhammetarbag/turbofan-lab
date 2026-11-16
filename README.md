@@ -42,6 +42,7 @@ Statik site `dist/client/` içinde oluşur. Bu klasör herhangi bir statik sunuc
 
 - Basınç ve sıcaklık **toplam/durma** özellikleridir. Hız eksenel hızdır. Her özellik için sabit fakat birbirinden farklı normalizasyon ölçeği kullanılır.
 - Kompresör P₀/T₀ artırır, yanma T₀ artırırken küçük P₀ kaybı gösterir. Türbin P₀/T₀ düşürür. Nozül hızlandırır, toplam sıcaklık artışı üretmez.
+- Yüksek basınç şaftı iş dengesi: HPT sıcaklık düşüşü HPC sıcaklık artışına eşittir (eşit cp, yakıt kütlesi ihmal). Böylece türbin gazı her gaz konumunda kompresör çıkışından (T3) sıcaktır ve gazla birlikte ısınır. Fan ve gaz ayrı kontrol edildiği için düşük basınç şaftının dengesi kapatılmaz; LPT sıcaklık düşüşü kavramsaldır.
 - Bypass/çekirdek kütlesel debi oranı tanımına uyar. Bypass değişiminde çekirdek debisi sabit tutulur. Görsel parçacıklar tek tek moleküller veya çözülmüş yoğunluk alanı değildir.
 - Göreli itki iki akışın `ṁ × ΔV` katkısının toplamıdır. Basınç itkisi ve yakıtın eklediği kütle ihmal edilir. Gösterge gerçek motorları karşılaştırmaya veya optimize etmeye uygun değildir.
 - Enerji görünümü gazdan şaft işine ayrılan kolu egzoza devam eden koldan ayırır; sayısal enerji dengesi sağlamaz.

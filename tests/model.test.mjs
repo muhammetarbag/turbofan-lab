@@ -78,3 +78,14 @@ test('all nine components and seven stages have correct teaching locations', () 
   assert.equal(components.find(c => c.name === 'HP compressor').stage, 2);
   assert.equal(components.find(c => c.name === 'HP turbine').stage, 4);
 });
+test('HP spool work balance: HPT temperature drop equals HPC temperature rise; turbine gas stays hotter than T3', () => {
+  for (const throttle of [0, 25, 50, 75, 100]) {
+    const c = model({ ...defaults, throttle }).core;
+    const t25 = sampleAt(c, 350).temperature, t3 = sampleAt(c, 500).temperature;
+    const t4 = sampleAt(c, 655).temperature, t45 = sampleAt(c, 725).temperature, t5 = sampleAt(c, 825).temperature;
+    close(t4 - t45, t3 - t25);
+    assert.ok(t4 > t45 && t45 > t5 && t5 > t3, JSON.stringify({ throttle, t3, t45, t5 }));
+  }
+  const idle = model({ ...defaults, throttle: 0 }).core, full = model({ ...defaults, throttle: 100 }).core;
+  for (const x of [725, 753, 825]) assert.ok(sampleAt(full, x).temperature > sampleAt(idle, x).temperature);
+});
