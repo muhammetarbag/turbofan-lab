@@ -35,6 +35,10 @@ export function model(p: Parameters) {
   const coreDelta = 0.21 + 0.52 * t - incoming * 0.12;
   const bypassDelta = (0.08 + 0.38 * lp) / (1 + bypass * 0.025) - incoming * 0.045;
   const coreThrust = mc * coreDelta, bypassThrust = mb * bypassDelta;
+  // HP şaftı iş dengesi (eşit cp, yakıt kütlesi ihmal): HPT sıcaklık düşüşü = HPC sıcaklık artışı.
+  // LP tarafı kapatılmaz: fan ve gaz ayrı kontrol olduğundan LPT düşüşü kavramsal kalır.
+  const t25 = 0.17 + hp * 0.09, t3 = 0.21 + hp * 0.24, t4 = 0.5 + t * 0.48;
+  const t45 = t4 - (t3 - t25), t5 = t45 - (0.09 + 0.11 * t);
   return { lp, hp, coreMass: mc, bypassMass: mb, bypassFraction: bypass / (1 + bypass), coreDelta, bypassDelta,
     coreThrust, bypassThrust, thrust: (coreThrust + bypassThrust) / 5.5,
     core: [
@@ -45,10 +49,10 @@ export function model(p: Parameters) {
       { x: 500, pressure: 0.3 + hp * 0.64, temperature: 0.21 + hp * 0.24, velocity: 0.12 + hp * 0.1 },
       { x: 535, pressure: (0.3 + hp * 0.64) * 0.99, temperature: 0.21 + hp * 0.24, velocity: 0.09 + hp * 0.05 },
       { x: 655, pressure: (0.3 + hp * 0.64) * 0.95, temperature: 0.5 + t * 0.48, velocity: 0.12 + hp * 0.08 },
-      { x: 725, pressure: 0.2 + hp * 0.3, temperature: 0.35 + t * 0.31, velocity: 0.18 + hp * 0.1 },
-      { x: 825, pressure: 0.12 + hp * 0.09, temperature: 0.26 + t * 0.2, velocity: 0.2 + hp * 0.12 },
-      { x: 955, pressure: 0.12 + hp * 0.085, temperature: 0.26 + t * 0.2, velocity: 0.12 + incoming * 0.22 + coreDelta },
-      { x: 1080, pressure: 0.12 + hp * 0.085, temperature: 0.26 + t * 0.2, velocity: 0.12 + incoming * 0.22 + coreDelta },
+      { x: 725, pressure: 0.2 + hp * 0.3, temperature: t45, velocity: 0.18 + hp * 0.1 },
+      { x: 825, pressure: 0.12 + hp * 0.09, temperature: t5, velocity: 0.2 + hp * 0.12 },
+      { x: 955, pressure: 0.12 + hp * 0.085, temperature: t5, velocity: 0.12 + incoming * 0.22 + coreDelta },
+      { x: 1080, pressure: 0.12 + hp * 0.085, temperature: t5, velocity: 0.12 + incoming * 0.22 + coreDelta },
     ] satisfies Sample[],
     bypass: [
       { x: 40, pressure: 0.08, temperature: 0.12, velocity: 0.12 + incoming * 0.22 },
